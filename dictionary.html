@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--    <meta charset="UTF-8">-->
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<select id="lang1">
+    <option value="en" >English</option>
+    <option value="vn" >Vietnamese</option>
+    <option value="jpn" >Japanese</option>
+</select>
+<input type="text" id="inp">
+<select id="lang2">
+    <option value="en">English</option>
+    <option value="vn">Vietnamese</option>
+    <option value="jpn">Japanese</option>
+</select>
+<p id="result"></p>
+<!--    <select name="" id="lang2">-->
+<!--        <option value="en"></option>-->
+<!--    </select>-->
+<button onclick="myFunction()">but</button>
+<script>
+    let En = ["hello", "good bye", "love"]
+    let Vn = ['xin chào', "tạm biệt", "yêu"]
+    let Jp = ['Kon\'nichiwa', 'Sayōnara', 'aisuru']
+    function myFunction() {
+        let _inp = document.getElementById('inp').value;
+        let slLang1 = document.getElementById("lang1").value;
+        let slLang2 = document.getElementById("lang2").value;
+        console.log('slLang1 = ', slLang1)
+        console.log('slLang2 = ', slLang2)
+        let _i = checkLanguageInput(_inp,checkArrLang(slLang1));
+        console.log('_i = ',_i)
+        if(_i==-1){
+            return document.getElementById('result').innerHTML = 'NOT FOUND';
+        } else {
+            document.getElementById('result').innerHTML = checkArrLang(slLang2)[_i];
+        }
+    }
+    function checkArrLang(key){
+        if(key ==='en'){
+            return En;
+        }
+        if(key === 'vn'){
+            return Vn;
+        }
+        if(key === 'jpn'){
+            return Jp
+        }
+    }
+    function checkLanguageInput(_inp, arr=[]){
+        for (let i=0; i<arr.length;i++){
+            if(_inp===arr[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
+</script>
+
+</body>
+</html>
